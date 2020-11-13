@@ -10,9 +10,9 @@ Written in C++ with SDL, SDL_image, tinyxml2 and BASS for linux (cmake)  and win
 
 ## Assets
 
-- (Press Start Font)[https://www.fontspace.com/press-start-2p-font-f11591]
+- [Press Start Font](https://www.fontspace.com/press-start-2p-font-f11591)
 - Background by flappy birds original author Dong Nguyen (.Gears Studios)
-- Ratherbe (originally done by Clean Bandit) Chiptune Version by (RetusMusic)[https://soundcloud.com/retus]
+- Ratherbe (originally done by Clean Bandit) Chiptune Version by [RetusMusic](https://soundcloud.com/retus)
 - Coin, Death, Jump sound, Mario sprites from various games by Nintendo
 
 
