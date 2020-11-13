@@ -1,6 +1,7 @@
 #include "Vector.h"
 #include <iostream>
 #include "SDL.h"
+#include <exception>
 
 Vector::Vector() {
 	x = 0.707;
@@ -13,38 +14,38 @@ Vector::Vector(double pX,double pY) {
 }
 
 
-Vector Vector::operator+(Vector& v) {
+Vector Vector::operator+(const Vector& v) {
 	Vector n;
 	n.x = x + v.x;
 	n.y = y + v.y;
 	return n;
 }
 
-Vector Vector::operator*(Vector& v) {
+Vector Vector::operator*(const Vector& v) {
 	Vector n;
 	n.x = x * v.x;
 	n.y = y * v.y;
 	return n;
 }
 
-Vector Vector::operator-(Vector& v) {
+Vector Vector::operator-(const Vector& v) {
 	Vector n;
 	n.x = x - v.x;
 	n.y = y - v.y;
 	return n;
 }
 
-Vector Vector::operator/(Vector& v) {
+Vector Vector::operator/(const Vector& v) {
 	Vector n;
 	if (v.x == 0 || v.y == 0) {
-		throw std::exception("Nullvector");
+		throw std::runtime_error("Nullvector");
 	}
 	n.x = x / v.x;
 	n.y = y / v.y;
 	return n;
 }
 
-Vector Vector::operator*(double val) {
+Vector Vector::operator*(const double val) {
 	Vector n;
 	n.x = x * val;
 	n.y = y * val;
@@ -71,7 +72,7 @@ void Vector::setY(double n) {
 Vector Vector::normalize() {
 	double mag = sqrt(x*x + y*y);
 	if (mag == 0.0) {
-		throw std::exception("Nullvector");
+		throw std::runtime_error("Nullvector");
 	}
 	
 	Vector n(x/mag,y/mag);
@@ -79,7 +80,7 @@ Vector Vector::normalize() {
 }
 
 Vector Vector::cross() {
-	throw std::exception("to be implemented\n");
+	throw std::runtime_error("to be implemented\n");
 }
 
 double Vector::dot(Vector& v) {

@@ -3,6 +3,7 @@
 #include "tinyxml2.h"
 #include <iostream>
 #include <string>
+#include <exception>
 using namespace tinyxml2;
 
 Text::Text(const char* path,const char* xml,SDL_Renderer* pRend) : 
@@ -20,34 +21,34 @@ Text::Text(const char* path,const char* xml,SDL_Renderer* pRend) :
 	XMLElement* para = NULL;
 
 	if (root == NULL) {
-		throw std::exception("invalid xml file");
+		throw std::runtime_error("invalid xml file");
 	}
 
 	for (auto charE = root->FirstChildElement("character");charE!=NULL;charE = charE->NextSiblingElement("character")) {
 		if (charE->NoChildren()) {
-			throw std::exception("invalid xml file");
+			throw std::runtime_error("invalid xml file");
 		}
 		
 		SDL_Rect c;
 
 		para = charE->FirstChildElement("x");
 		if (para==NULL || para->QueryIntText(&c.x) != XML_SUCCESS) {
-			throw std::exception("invalid xml file");
+			throw std::runtime_error("invalid xml file");
 		}
 
 		para = charE->FirstChildElement("y");
 		if (para==NULL || para->QueryIntText(&c.y) != XML_SUCCESS) {
-			throw std::exception("invalid xml file");
+			throw std::runtime_error("invalid xml file");
 		}
 
 		para = charE->FirstChildElement("width");
 		if (para==NULL || para->QueryIntText(&c.w) != XML_SUCCESS) {
-			throw std::exception("invalid xml file");
+			throw std::runtime_error("invalid xml file");
 		}
 
 		para = charE->FirstChildElement("height");
 		if (para==NULL || para->QueryIntText(&c.h) != XML_SUCCESS) {
-			throw std::exception("invalid xml file");
+			throw std::runtime_error("invalid xml file");
 		}
 		vCharSet.push_back(c);
 	}

@@ -11,11 +11,11 @@ public:
 	Vector();
 	Vector(double,double);
 
-	Vector operator+(Vector&);
-	Vector operator-(Vector&);
-	Vector operator*(Vector&);
-	Vector operator*(double);
-	Vector operator/(Vector&);
+	Vector operator+(const Vector&);
+	Vector operator-(const Vector&);
+	Vector operator*(const Vector&);
+	Vector operator*(const double);
+	Vector operator/(const Vector&);
 
 	Vector normalize();
 	Vector cross();

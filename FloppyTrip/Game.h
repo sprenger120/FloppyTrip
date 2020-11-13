@@ -1,9 +1,9 @@
 #ifndef HEADER_GAME
 #define HEADER_GAME	
 #include "Vector.h"
-#include "bass.h"
+#include <bass.h>
 #include <sstream>
-#include "SDL_rect.h"
+#include <SDL_rect.h>
 
 struct SDL_Window;
 struct SDL_Renderer;

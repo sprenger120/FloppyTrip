@@ -43,28 +43,25 @@ Game::~Game() {
 void Game::run() {
 	f_initSuccessful = initRender();
 	if (!f_initSuccessful) {
-		system("pause");
-		return;
+		throw std::runtime_error("initRender failed");
 	}
 
 	f_initSuccessful = initAudio();
 	if (!f_initSuccessful) {
-		system("pause");
-
-		return;
+        throw std::runtime_error("initRender failed");
 	}
 
-	Texture texP(".\\Resources\\Textures\\pipe2.png",p_sdlRenderer);
-	Texture texPH(".\\Resources\\Textures\\pipe_head.png",p_sdlRenderer);
-	Texture texPV(".\\Resources\\Textures\\pipe_valve4.png",p_sdlRenderer);
-	Texture texBack(".\\Resources\\Textures\\background.png",p_sdlRenderer);
-	Texture texMenue(".\\Resources\\Textures\\startScreen.png",p_sdlRenderer);
+	Texture texP("./Resources/Textures/pipe2.png",p_sdlRenderer);
+	Texture texPH("./Resources/Textures/pipe_head.png",p_sdlRenderer);
+	Texture texPV("./Resources/Textures/pipe_valve4.png",p_sdlRenderer);
+	Texture texBack("./Resources/Textures/background.png",p_sdlRenderer);
+	Texture texMenue("./Resources/Textures/startScreen.png",p_sdlRenderer);
 
-	Animation animPlr(8,21,0,0,5,".\\Resources\\Textures\\mario_sprite.png",p_sdlRenderer);
+	Animation animPlr(8,21,0,0,5,"./Resources/Textures/mario_sprite.png",p_sdlRenderer);
 
-	Text txSmall(".\\Resources\\Font\\font_small.png",".\\Resources\\Font\\font_small.xml",p_sdlRenderer);
-	Text txPoints(".\\Resources\\Font\\font2.png",".\\Resources\\Font\\font2.xml",p_sdlRenderer);
-	Text txPixel(".\\Resources\\Font\\pixelFont.png",".\\Resources\\Font\\pixelFont.xml",p_sdlRenderer);
+	Text txSmall("./Resources/Font/font_small.png","./Resources/Font/font_small.xml",p_sdlRenderer);
+	Text txPoints("./Resources/Font/font2.png","./Resources/Font/font2.xml",p_sdlRenderer);
+	Text txPixel("./Resources/Font/pixelFont.png","./Resources/Font/pixelFont.xml",p_sdlRenderer);
 
 	texPipe = &texP;
 	texPipeHead = &texPH;
@@ -79,7 +76,7 @@ void Game::run() {
 
 	restartGame();
 
-	//S Taste für Sound aus
+	//S Taste fï¿½r Sound aus
 	//Game Loop
 	//int FadingTickLength = 50;
 	//SDL_Texture* tex2 = SDL_CreateTexture(p_sdlRenderer,SDL_PIXELFORMAT_ABGR8888,SDL_TEXTUREACCESS_STREAMING,WindowHeight,WindowWidth);
@@ -105,7 +102,7 @@ void Game::run() {
 	//	};
 	//memset(pixels,0xFF,WindowWidth*WindowHeight*4);
 
-	Animation anim2(2,70,0,0,50,".\\Resources\\Textures\\spacebar.png",p_sdlRenderer);
+	//Animation anim2(2,70,0,0,50,"./Resources/Textures/spacebar.png",p_sdlRenderer);
 
 	const Uint8 *keys = SDL_GetKeyboardState(NULL);
 	int lastFPSUpdate = SDL_GetTicks();
@@ -113,7 +110,7 @@ void Game::run() {
 
 	bool fPressing = false;
 	bool fInPipe = false;
-	double tickLength = 1000/60;
+	double tickLength = 1000.0/60.0;
 	int tick = 1;
 	int startTick = 0;
 	int lastFPSUpdateTick = 0;
@@ -163,7 +160,7 @@ void Game::run() {
 			renderLooseScreen();
 		}
 		SDL_Rect rect = {0,0,70,13};
-		SDL_RenderCopy(p_sdlRenderer,anim2.getTx(),anim2.getRect(),&rect);
+		//SDL_RenderCopy(p_sdlRenderer,anim2.getTx(),anim2.getRect(),&rect);
 		
 		SDL_RenderPresent(p_sdlRenderer);
 
@@ -362,28 +359,28 @@ bool Game::initAudio() {
 	BASS_SetConfig(BASS_CONFIG_GVOL_STREAM,2000);	
 
 	cout<<"Sound: coin...";
-	if ((audioCoin = BASS_StreamCreateFile(FALSE, ".\\Resources\\Sound\\CoinSound.wav", 0, 0, 0)) == NULL) {
+	if ((audioCoin = BASS_StreamCreateFile(FALSE, "./Resources/Sound/CoinSound.wav", 0, 0, 0)) == NULL) {
 		cout<<"Error\n";
 		return false;
 	}
 	cout<<"Done\n";
 
 	cout<<"Sound: death...";
-	if ((audioDeath = BASS_StreamCreateFile(FALSE, ".\\Resources\\Sound\\DeathSound.wav", 0, 0, 0)) == NULL) {
+	if ((audioDeath = BASS_StreamCreateFile(FALSE, "./Resources/Sound/DeathSound.wav", 0, 0, 0)) == NULL) {
 		cout<<"Error\n";
 		return false;
 	}
 	cout<<"Done\n";
 
 	cout<<"Sound: jump...";
-	if ((audioJump = BASS_StreamCreateFile(FALSE, ".\\Resources\\Sound\\JumpSound.wav", 0, 0, 0)) == NULL) {
+	if ((audioJump = BASS_StreamCreateFile(FALSE, "./Resources/Sound/JumpSound.wav", 0, 0, 0)) == NULL) {
 		cout<<"Error\n";
 		return false;
 	}
 	cout<<"Done\n";
 
 	cout<<"Sound: song...";
-	if ((audioSong = BASS_StreamCreateFile(FALSE, ".\\Resources\\Sound\\RatherBeChiptune.wav", 0, 0, 0)) == NULL) {
+	if ((audioSong = BASS_StreamCreateFile(FALSE, "./Resources/Sound/RatherBeChiptune.wav", 0, 0, 0)) == NULL) {
 		cout<<"Error\n";
 		return false;
 	}
@@ -391,7 +388,7 @@ bool Game::initAudio() {
 
 
 	cout<<"Sound: song_radio...";
-	if ((audioSongRadio = BASS_StreamCreateFile(FALSE, ".\\Resources\\Sound\\RatherBeChiptune_radio.wav", 0, 0, 0)) == NULL) {
+	if ((audioSongRadio = BASS_StreamCreateFile(FALSE, "./Resources/Sound/RatherBeChiptune_radio.wav", 0, 0, 0)) == NULL) {
 		cout<<"Error\n";
 		return false;
 	}

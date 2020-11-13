@@ -1,6 +1,6 @@
 #ifndef HEADER_TEXTURE
 #define HEADER_TEXTURE
-#include <SDl_rect.h>
+#include <SDL_rect.h>
 
 struct SDL_Surface;
 struct SDL_Texture;
