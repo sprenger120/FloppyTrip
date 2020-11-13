@@ -1,5 +1,7 @@
 ## Floppy Trip 
 
+![ingame picture](https://github.com/sprenger120/FloppyTrip/blob/master/images/ingame.png "Ingame view")
+
 [Gameplay](https://www.youtube.com/watch?v=gRv6eYzA1zo)
 
 This is a highschool project for comp. sci. class where we could programm whatever as long as your project was accepted by the teacher. So I chose to copy flappy bird which was popular at the time.   
@@ -11,7 +13,7 @@ Written in C++ with SDL, SDL_image, tinyxml2 and BASS for linux (cmake)  and win
 - (Press Start Font)[https://www.fontspace.com/press-start-2p-font-f11591]
 - Background by flappy birds original author Dong Nguyen (.Gears Studios)
 - Ratherbe (originally done by Clean Bandit) Chiptune Version by (RetusMusic)[https://soundcloud.com/retus]
-- Coin, Death, Jump sound from various mario games by Nintendo
+- Coin, Death, Jump sound, Mario sprites from various games by Nintendo
 
 
 ## Build and run
